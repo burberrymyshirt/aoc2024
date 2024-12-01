@@ -11,7 +11,7 @@ function readFileData($filePath): array
 
 function main()
 {
-    $filePath = __DIR__ . '/data/input.txt';
+    $filePath = __DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'input.txt';
 
     $explode = readFileData($filePath);
 
