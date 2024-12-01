@@ -24,16 +24,19 @@ function main()
         $list2[] = (int)$explode[$i + 1];
     }
 
-    sort($list1, SORT_NUMERIC);
-    sort($list2, SORT_NUMERIC);
 
-    $distance = 0;
-    foreach ($list1 as $i => $value) {
-        $distance += abs($value - $list2[$i]);
+    // $map2 = $value => count
+    $map2 = [];
+    foreach ($list2 as $val) {
+        $map2[$val] = ($map2[$val] ?? 0) + 1;
     }
 
-    echo "$distance\n";
+    $score = 0;
+    foreach ($list1 as $val) {
+        $score += $val * ($map2[$val] ?? 0);
+    }
+
+    echo "$score\n";
 }
 
-// Run the script
 main();
