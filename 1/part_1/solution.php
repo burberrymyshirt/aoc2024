@@ -15,8 +15,7 @@ function readFileData($filePath): array
 
 function main()
 {
-    // Define the input file path
-    $filePath = __DIR__ . '/data/input.txt'; // Adjust the path as needed
+    $filePath = __DIR__ . '/data/input.txt';
 
     $explode = readFileData($filePath);
 
