@@ -2,10 +2,6 @@
 
 function readFileData($filePath): array
 {
-    if (!file_exists($filePath)) {
-        die("File not found: $filePath\n");
-    }
-
     $file = file_get_contents($filePath);
     $file = str_replace("\n", ' ', $file);
     $file = preg_replace('/\s+/', ' ', $file);
