@@ -5,8 +5,6 @@ $file = file(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'input.txt')
 $return = array_filter($file, static function($val){
     $val = explode(' ', $val);
 
-    $return = true;
-
     $direction = $val[1]-$val[0] <=> 0;
 
     foreach($val as $k => $v) {
@@ -31,7 +29,8 @@ $return = array_filter($file, static function($val){
             return false;
         }
     }
-    return $return;
+
+    return true;
 });
 
 echo count($return)."\n";
