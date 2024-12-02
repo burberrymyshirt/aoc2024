@@ -1,9 +1,5 @@
 <?php
 
-function my_gmp_sign($n) {
-    return ($n > 0 ) ? 1 : ( ( $n < 0 ) ? -1 : 0 );
-}
-
 $file = file(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.'input.txt');
 
 $return = array_filter($file, static function($val){
@@ -11,7 +7,7 @@ $return = array_filter($file, static function($val){
 
     $return = true;
 
-    $direction = my_gmp_sign($val[1]-$val[0]);
+    $direction = $val[1]-$val[0] <=> 0;
 
     foreach($val as $k => $v) {
         if(!isset($val[$k+1])) {
@@ -19,8 +15,7 @@ $return = array_filter($file, static function($val){
         }
 
         if (!$direction) {
-            $return = false;
-            break;
+            return false;
         }
 
         if(!isset($val[$k+1])) {
@@ -29,13 +24,11 @@ $return = array_filter($file, static function($val){
 
         $abs = abs($v-$val[$k+1]);
         if ($abs > 3 || $abs == 0) {
-            $return = false;
-            break;
+            return false;
         }
 
-        if (my_gmp_sign($val[$k+1]-$v) !== $direction) {
-            $return = false;
-            break;
+        if (($val[$k+1]-$v <=> 0) !== $direction) {
+            return false;
         }
     }
     return $return;
