@@ -16,10 +16,6 @@ $return = array_filter($file, static function($val){
             return false;
         }
 
-        if(!isset($val[$k+1])) {
-            continue;
-        }
-
         $abs = abs($v-$val[$k+1]);
         if ($abs > 3 || $abs == 0) {
             return false;
