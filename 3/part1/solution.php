@@ -2,26 +2,19 @@
 
 $mode = 'input';
 // $mode = 'test';
-
 $contents = file_get_contents(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.$mode.'.txt');
 
-$regex = '/mul\(\d+,\d+\)/';
+$matches_all = [];
+preg_match_all('/mul\(\d+,\d+\)/', $contents, $matches_all);
 
-$matches = [];
-preg_match_all($regex, $contents, $matches);
-
-$regex2 = '/\d+,\d+/';
 $return = 0;
-foreach ($matches[0] as $val) {
-    $m = [];
-    preg_match_all($regex2, $val, $m);
+foreach ($matches_all[0] as $val) {
+    $matches_specific = [];
+    preg_match_all('/\d+,\d+/', $val, $matches_specific);
 
-    $nums = $m[0][0];
-    
-    $nums = explode(',', $nums);
+    $nums = explode(',', $matches_specific[0][0]);
     
     $return += $nums[0] * $nums[1];
-
 }
 
 echo $return."\n";
