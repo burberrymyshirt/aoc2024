@@ -1,8 +1,7 @@
 <?php
 
 
-// $mode = 'test1';
-// $mode = 'test2';
+// $mode = 'test';
 $mode = 'input';
 
 $contents = file(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.$mode.'.txt');
