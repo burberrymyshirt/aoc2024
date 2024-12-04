@@ -12,19 +12,17 @@ $state = true;
 foreach ($matches_all[0] as $val) {
     if ($val === 'do()') {
         $state = true;
+        continue;
     }
 
     if ($val === 'don\'t()') {
         $state = false;
+        continue;
     }
 
     if ($state) {
         $matches_specific = [];
         preg_match_all('/\d+,\d+/', $val, $matches_specific);
-
-        if(!$matches_specific[0]) {
-            continue;
-        }
 
         $nums = explode(',', $matches_specific[0][0]);
         $return += $nums[0] * $nums[1];
