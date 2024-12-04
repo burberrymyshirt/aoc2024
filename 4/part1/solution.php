@@ -57,8 +57,7 @@ function checkInDirection($direction, $start_y, $start_x, $matrix): bool {
             return false;
         }
 
-        $dir_cords[0] = updateCord($dir_cords[0]);
-        $dir_cords[1] = updateCord($dir_cords[1]);
+        $dir_cords = array_map('updateCord', $dir_cords);
     }
     
     return true;
