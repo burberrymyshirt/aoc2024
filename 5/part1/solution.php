@@ -1,5 +1,7 @@
 <?php
 
+/* This sucks, just use an associative array and compare the indexes the rules are at instead */
+
 $mode = 'input';
 // $mode = 'test';
 $contents = file(__DIR__.DIRECTORY_SEPARATOR.'data'.DIRECTORY_SEPARATOR.$mode.'.txt');
